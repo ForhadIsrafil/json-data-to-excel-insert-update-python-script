@@ -1,0 +1,12 @@
+I've drawn the idea out on microsoft paint in the attachment
+
+I'm looking for a python script that can read a JSON file and extract 5 key pieces of information,
+validate the information, and clean the extraction if needed, which is then used to update a spreadsheet if the
+value in the spreadsheet is different.
+
+# todo: 5 key pieces of information:
+1. Doc Ref (document_id)
+2. Doc Title (title)
+3. Rev (Revision)
+4. Purpose of issue (PurposeOfIssue)
+5. Status (Status)
