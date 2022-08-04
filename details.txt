@@ -4,6 +4,8 @@ I'm looking for a python script that can read a JSON file and extract 5 key piec
 validate the information, and clean the extraction if needed, which is then used to update a spreadsheet if the
 value in the spreadsheet is different.
 
+* I mean for all cells, if there is no new data, then the old one remains as it was previously
+
 # todo: 5 key pieces of information:
 1. Doc Ref (document_id)
 2. Doc Title (title)

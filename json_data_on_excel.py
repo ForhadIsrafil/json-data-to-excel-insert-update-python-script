@@ -8,11 +8,12 @@ for path in json_files:
     json_file = open(path.replace("\\", "/"), "r")
     dict_data = json.loads(json_file.read())
 
-    doc_ref = dict_data['document_id']
+    doc_ref = dict_data['extracted_metadata']["filename"].split(".pdf")[0]
     doc_title = dict_data['DocTitle'][0]
     rev = dict_data['Rev'][-1]
     purpose_of_issue = dict_data['PurposeOfIssue'][-1]
     status = dict_data.get('Status', "")
+
     # TODO: READ JSON DATA END
 
     # TODO: CHECK AND UPDATE DATA START
@@ -31,10 +32,14 @@ for path in json_files:
         adding_temp_df.to_excel("doc_listing.xlsx", index=False)
 
     if len(is_doc_exist) > 0:
-        df.at[is_doc_exist.index[0], "Doc Title"] = doc_title
-        df.at[is_doc_exist.index[0], "Rev"] = rev
-        df.at[is_doc_exist.index[0], "Purpose of Issue"] = purpose_of_issue
-        df.at[is_doc_exist.index[0], "Status"] = status[-1] if status != "" else ""
+        if doc_title != "":
+            df.at[is_doc_exist.index[0], "Doc Title"] = doc_title
+        if rev != "":
+            df.at[is_doc_exist.index[0], "Rev"] = rev
+        if purpose_of_issue != "":
+            df.at[is_doc_exist.index[0], "Purpose of Issue"] = purpose_of_issue
+        if status != "":
+            df.at[is_doc_exist.index[0], "Status"] = status[-1]
 
         df.to_excel("doc_listing.xlsx", index=False)
     # TODO: CHECK AND UPDATE DATA END
